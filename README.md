@@ -533,3 +533,14 @@ O pipeline atual está **tecnicamente consistente e validado**.
 As anomalias observadas são decorrentes **da natureza dos dados de origem**, e não de falhas no processamento.
 
 O sistema fornece uma base confiável para **governança de licenças e análise de custos**.
+
+---
+
+# 17. Demo Screenshots
+
+Capturas da versao publica de demonstracao:
+
+![Demo Home](demo_public/screenshots/01-home.png)
+![Demo Site North](demo_public/screenshots/02-site-north.png)
+![Demo Site East](demo_public/screenshots/03-site-east.png)
+![Demo Site South](demo_public/screenshots/04-site-south.png)
