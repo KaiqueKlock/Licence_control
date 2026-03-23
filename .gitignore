@@ -1,0 +1,31 @@
+# Public repository safety policy
+# Sensitive internal assets (explicit deny)
+.ipynb_checkpoints/
+csv_exports/
+exports/
+*.xlsx
+*.xls
+*.csv
+*.zip
+export-TODOS.csv
+export_locations.bat
+Versao SPA.ipynb
+Versao SPA - Copia.ipynb
+home_central.html
+index_AT_BR_*.html
+Planner*.png
+Logo.png
+
+# Default deny: only publish demo files and docs.
+*
+
+!.gitignore
+!project.md
+!README.md
+!demo_public/
+!demo_public/**
+
+# Local development artifacts
+demo_public/.venv/
+demo_public/__pycache__/
+demo_public/**/__pycache__/

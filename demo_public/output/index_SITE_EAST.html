@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Access and License Control - Demo - SITE_EAST</title>
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --card: #ffffff;
+      --text: #102a43;
+      --muted: #627d98;
+      --primary: #125d98;
+      --primary-soft: #d9ebf9;
+      --success: #1f8f4e;
+      --warning: #c07a00;
+      --danger: #b42318;
+      --neutral: #5d6b82;
+      --border: #d9e2ec;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 14px rgba(16, 42, 67, 0.08);
+      margin-bottom: 16px;
+    }
+    .header h1 { margin: 0 0 8px 0; font-size: 26px; }
+    .header p { margin: 0; color: var(--muted); }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .link-btn {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+    .card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; }
+    .card .value { margin-top: 6px; font-size: 26px; font-weight: 700; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 12px; }
+    .tab {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(16, 42, 67, 0.08);
+      padding: 12px;
+      display: none;
+    }
+    .panel.active { display: block; }
+    .section-title { margin: 4px 0 10px; }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    .table th, .table td {
+      border: 1px solid var(--border);
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .table th {
+      background: var(--primary-soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge-active { background: var(--success); }
+    .badge-warning { background: var(--warning); }
+    .badge-inactive { background: var(--danger); }
+    .badge-neutral { background: var(--neutral); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .empty-state { color: var(--muted); font-style: italic; }
+    @media (min-width: 980px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="header">
+      <div class="header-row">
+        <div>
+          <h1>SITE_EAST</h1>
+          <p>Access and License Control - Demo</p>
+        </div>
+        <a href="home.html" class="link-btn">Back to home</a>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="label">Active</div><div class="value">4</div></article>
+        <article class="card"><div class="label">Warning</div><div class="value">0</div></article>
+        <article class="card"><div class="label">Inactive</div><div class="value">4</div></article>
+        <article class="card"><div class="label">No record</div><div class="value">0</div></article>
+      </div>
+      <p>Generated at 2026-03-23 17:35 UTC</p>
+    </section>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showPanel('overview', this)">Overview</button>
+      <button class="tab" onclick="showPanel('infra', this)">Infra licenses</button>
+      <button class="tab" onclick="showPanel('sap', this)">SAP licenses</button>
+    </div>
+
+    <section id="overview" class="panel active">
+      <h3 class="section-title">Overview by service</h3>
+      <div class="grid-2">
+        <div>
+          <h4>Infrastructure</h4>
+          <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Service</th>
+      <th>Records</th>
+      <th>Active</th>
+      <th>Warning</th>
+      <th>Inactive</th>
+      <th>No record</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>COLLAB_SUITE</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>DATA_ANALYTICS</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>DESIGN_TOOL</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>REMOTE_ACCESS</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+        <div>
+          <h4>SAP</h4>
+          <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>SAP module</th>
+      <th>Records</th>
+      <th>Active</th>
+      <th>Warning</th>
+      <th>Inactive</th>
+      <th>No record</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MM</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>PP</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>QM</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>SD</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+    </section>
+
+    <section id="infra" class="panel">
+      <h3 class="section-title">Infrastructure license details</h3>
+      <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Display name</th>
+      <th>User</th>
+      <th>Service</th>
+      <th>Department</th>
+      <th>Last logon</th>
+      <th>Days without login</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gia Foster</td>
+      <td>u007</td>
+      <td>DESIGN_TOOL</td>
+      <td>Engineering</td>
+      <td>2026-03-19</td>
+      <td>4</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td>Hugo Reed</td>
+      <td>u008</td>
+      <td>DATA_ANALYTICS</td>
+      <td>Engineering</td>
+      <td>2026-02-11</td>
+      <td>40</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td>Iris Cole</td>
+      <td>u009</td>
+      <td>COLLAB_SUITE</td>
+      <td>Logistics</td>
+      <td>2025-11-11</td>
+      <td>132</td>
+      <td><span class="badge badge-inactive">Inactive</span></td>
+    </tr>
+    <tr>
+      <td>Jack Quinn</td>
+      <td>u010</td>
+      <td>REMOTE_ACCESS</td>
+      <td>Operations</td>
+      <td>2025-08-15</td>
+      <td>220</td>
+      <td><span class="badge badge-inactive">Inactive</span></td>
+    </tr>
+  </tbody>
+</table>
+    </section>
+
+    <section id="sap" class="panel">
+      <h3 class="section-title">SAP license details</h3>
+      <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Display name</th>
+      <th>User</th>
+      <th>SAP module</th>
+      <th>Profile</th>
+      <th>Last logon</th>
+      <th>Days without login</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gia Foster</td>
+      <td>u007</td>
+      <td>PP</td>
+      <td>STANDARD</td>
+      <td>2026-03-19</td>
+      <td>4</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td>Hugo Reed</td>
+      <td>u008</td>
+      <td>QM</td>
+      <td>STANDARD</td>
+      <td>2026-02-11</td>
+      <td>40</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td>Iris Cole</td>
+      <td>u009</td>
+      <td>MM</td>
+      <td>STANDARD</td>
+      <td>2025-11-11</td>
+      <td>132</td>
+      <td><span class="badge badge-inactive">Inactive</span></td>
+    </tr>
+    <tr>
+      <td>Jack Quinn</td>
+      <td>u010</td>
+      <td>SD</td>
+      <td>STANDARD</td>
+      <td>2025-08-15</td>
+      <td>220</td>
+      <td><span class="badge badge-inactive">Inactive</span></td>
+    </tr>
+  </tbody>
+</table>
+    </section>
+  </div>
+
+  <script>
+    function showPanel(panelId, button) {
+      const panels = document.querySelectorAll(".panel");
+      const tabs = document.querySelectorAll(".tab");
+      panels.forEach((panel) => panel.classList.remove("active"));
+      tabs.forEach((tab) => tab.classList.remove("active"));
+      document.getElementById(panelId).classList.add("active");
+      button.classList.add("active");
+    }
+  </script>
+</body>
+</html>

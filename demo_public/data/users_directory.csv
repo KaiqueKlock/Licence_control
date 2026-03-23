@@ -1,0 +1,13 @@
+user_id,display_name,email,location,department,last_logon,enabled
+u001,Alex Carter,alex.carter@example.com,SITE_NORTH,Finance,2026-03-20,True
+u002,Bea Mitchell,bea.mitchell@example.com,SITE_NORTH,Operations,2026-01-02,True
+u003,Cody Parker,cody.parker@example.com,SITE_NORTH,IT,2025-10-30,True
+u004,Dana Walsh,dana.walsh@example.com,SITE_SOUTH,HR,2026-03-10,True
+u005,Eli Morgan,eli.morgan@example.com,SITE_SOUTH,IT,,True
+u006,Finn Hayes,finn.hayes@example.com,SITE_SOUTH,Sales,2025-12-05,False
+u007,Gia Foster,gia.foster@example.com,SITE_EAST,Engineering,2026-03-19,True
+u008,Hugo Reed,hugo.reed@example.com,SITE_EAST,Engineering,2026-02-11,True
+u009,Iris Cole,iris.cole@example.com,SITE_EAST,Logistics,2025-11-11,True
+u010,Jack Quinn,jack.quinn@example.com,SITE_EAST,Operations,2025-08-15,False
+u011,Kira Stone,kira.stone@example.com,SITE_NORTH,Quality,2026-03-22,True
+u012,Liam West,liam.west@example.com,SITE_SOUTH,Finance,2026-02-25,True
