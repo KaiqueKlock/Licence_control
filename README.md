@@ -485,6 +485,7 @@ Tecnologias usadas:
 HTML
 CSS
 JavaScript
+Python
 ```
 
 ---
